@@ -114,7 +114,7 @@ function submitbutton() {
     password: document.getElementById("password").value,
     confirm: document.getElementById("confirm").value,
   };
-  console.log(userData);
+  // console.log(userData);
   let users = JSON.parse(localStorage.getItem("users")) || [];
 
   if (
