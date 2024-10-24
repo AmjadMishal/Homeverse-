@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <link rel="manifest" href="./favicon/site.webmanifest">
+    <title>Document</title>
+</head>
+<style>
+    :root {
+        --primary-color: hsl(9, 100%, 62%);
+        --secondary-color: hsl(9deg 100% 44.96% / 15%);
+        --body-font: "Nunito Sans", sans-serif;
+        --heading-font: "Poppins", sans-serif;
+    }
+
+    * {
+        margin: 0px;
+        padding: 0px;
+        text-decoration: none;
+        list-style: none;
+        font-family: var(--heading-font);
+        scroll-behavior: smooth;
+    }
+
+    /* Navabar css */
+    header {
+        display: flex;
+        background-color: #fffefe;
+        padding-block: 25px;
+        justify-content: space-evenly;
+        align-items: center;
+        font-family: var(--heading-font);
+        position: sticky;
+        top: 0px;
+        z-index: 99999999;
+        box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+    }
+
+    nav {
+        height: 50px;
+    }
+
+    #navLinks {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        gap: 30px;
+        font-size: 1.1rem;
+    }
+
+    .menu {
+        display: none;
+        /* padding: 10px; */
+        height: 44px;
+        width: 44px;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        box-shadow: 2px 2px 5px rgb(77, 74, 74);
+    }
+
+    .navBtn {
+        height: 44px;
+        width: 44px;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 2px 2px 5px rgb(77, 74, 74);
+        flex-direction: column;
+        background-color: white;
+    }
+
+    .navSvg {
+        fill: black !important;
+        padding: 10px;
+    }
+
+    .navBtnContainer {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btnText {
+        display: none;
+    }
+
+    #sidebar {
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 300px;
+        background-color: rgb(255, 255, 255);
+    }
+
+    .sidebarLogo {
+        display: flex;
+        padding-block: 30px;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 0px 10px 0px 10px;
+        border-bottom: 1px solid black;
+
+    }
+
+    .sidbarWrraper {
+        display: none;
+        background: #00000059;
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+    }
+
+    .navItems {
+        padding: 20px;
+        display: block;
+        color: grey;
+    }
+
+    .close {
+        display: flex;
+    }
+
+    .navItems:hover,
+    .navSvg:hover,
+    .active {
+        fill: var(--primary-color) !important;
+        color: var(--primary-color);
+        cursor: pointer;
+    }
+
+    /* Media Query Navbar */
+    @media(min-width:1125px) {
+        .sidbarWrraper {
+            display: none !important;
+        }
+    }
+
+    @media(max-width:300px) {
+        #sidebar {
+            width: 100%;
+        }
+
+        .sidebarLogo img {
+            width: 150px;
+        }
+
+    }
+
+    @media(max-width:1125px) {
+        #navLinks {
+            display: none;
+        }
+
+        header {
+            gap: 100px;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background-color: white;
+        }
+    }
+
+
+    @media(max-width:665px) {
+        header {
+            justify-content: center;
+            gap: 0px;
+        }
+
+        .navBtnContainer {
+            position: fixed;
+            bottom: 0;
+            display: flex;
+            justify-content: space-evenly;
+            background: #fffefe;
+            width: 100%;
+            padding-block: 10px;
+        }
+
+        .navBtn {
+            height: auto;
+            width: auto;
+        }
+
+        .menu {
+            height: auto;
+            width: auto;
+        }
+
+        .navBtn,
+        .menu {
+            background: #ffffff;
+            box-shadow: none;
+        }
+
+        .btnText {
+            display: flex;
+            color: grey;
+        }
+
+    }
+
+    .postproperty {
+        display: flex;
+        flex-wrap: wrap;
+        background-image: url(./assets/Desktop_Animation_compress.gif);
+        background-size: cover;
+        padding-bottom: 200px;
+        background-position: center;
+    }
+
+    .sell {
+        /* background-color: #f05642; */
+        width: 600px;
+    }
+
+    .sell h1 {
+        /* width: 400px; */
+        margin: 30px 200px 20px 50px;
+    }
+
+    @media(max-width:675px) {
+        .sell h1 {
+            margin: 0px;
+        }
+    }
+
+    @media(max-width:460px) {
+        .sell h1 {
+            padding: 0px;
+
+        }
+    }
+
+    .startposting {
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        padding: 20px 30px 20px 30px;
+        margin-top: 50px;
+        border-radius: 8px;
+        width: 350px;
+        background: #fff;
+        margin-left: 100px;
+
+    }
+
+    @media(max-width:560px) {
+        .startposting {
+            width: 300px;
+            margin: auto;
+        }
+
+        .sell h1 {
+            padding: 30px 0px 20px 50px;
+
+        }
+    }
+
+    .startposting button {
+        border-radius: 20px;
+        padding: 7px 12px;
+        border: 1px solid gainsboro;
+        background-color: white;
+        color: gray;
+    }
+
+    .startposting button:hover {
+        cursor: pointer;
+        background-color: gainsboro;
+    }
+
+    h1 span {
+        color: #0078DB;
+    }
+
+    .sell p {
+        padding: 5px 0 5px 50px;
+    }
+
+    .sell i {
+        color: green;
+    }
+
+    h4 {
+        font-weight: lighter;
+        padding: 5px 0 5px 0;
+    }
+
+    h5 {
+        font-weight: lighter;
+        padding: 5px 0 5px 0;
+    }
+
+    .type {
+        padding: 20px 0 20px 0;
+    }
+
+    input[type="text"]::placeholder {
+        padding: 0px 0px 0px 10px;
+        font-size: medium;
+    }
+
+    .phone input {
+        height: 40px;
+        width: 340px;
+        border: 1px solid gainsboro;
+        border-radius: 4px;
+    }
+
+    .submit button {
+        height: 60px;
+        width: 350px;
+        border: none;
+        border-radius: 4px;
+        background-color: #0078DB;
+        color: white;
+        font-size: large;
+        font-weight: bold;
+
+    }
+
+    .submit button:hover {
+        background-color: #004e8f;
+    }
+
+    @media(max-width:560px) {
+        .phone input {
+            width: 300px;
+        }
+
+        .submit button {
+            width: 300px;
+        }
+    }
+
+    .submit {
+        padding: 30px 0 0 0;
+        font-size: larger;
+    }
+
+    .how {
+        padding: 50px 0px 30px 0px;
+    }
+
+    .how p {
+        text-align: center;
+        color: gray;
+    }
+
+    .how h1 {
+        text-align: center;
+        width: 400px;
+        margin: auto;
+    }
+
+    @media(max-width: 415px) {
+        .how h1 {
+            width: 300px;
+            font-size: medium;
+        }
+    }
+
+    .howtopost {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    @media (max-width:592px) {
+        .howtopost {
+            justify-content: space-evenly;
+            padding: 0px 10px;
+        }
+    }
+
+    .add {
+        width: 30%;
+    }
+
+    .add span {
+        color: #0078DB;
+    }
+
+    .add img {
+        height: 40px;
+        width: 40px;
+    }
+
+    .add p {
+        padding: 8px 0 0 0;
+        color: gray;
+        line-height: 23px;
+    }
+
+    @media(max-width:500px) {
+        .add {
+            font-size: small;
+        }
+    }
+
+    @media(max-width:425px) {
+        .add {
+            font-size: x-small;
+        }
+    }
+
+    .submit1 {
+        text-align: center;
+        padding: 30px;
+    }
+
+    .submit1 button {
+        padding: 10px;
+        font-weight: bold;
+        color: white;
+        border: none;
+        background-color: #0078DB;
+        border-radius: 3px;
+        box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+    }
+
+    .submit1 button:hover {
+        background-color: #004e8f;
+        cursor: pointer;
+    }
+
+    .photo {
+        overflow: hidden;
+        height: 400px;
+        width: 170vh;
+        padding: 20px 30px 0 30px;
+        margin: auto;
+    }
+
+    .visitors {
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        width: 900px;
+        margin: 50px auto;
+        background-color: white;
+        overflow: hidden;
+    }
+
+    @media(max-width:940px) {
+        .visitors {
+            width: 800px;
+        }
+    }
+
+    .over p {
+        padding: 5px 40px;
+        color: gray;
+    }
+
+    .over1 h2 {
+        margin-top: 0px;
+        /* padding: 0 0 0 0px; */
+    }
+
+    .visitors h1 {
+        padding: 50px 90px;
+    }
+
+    .over {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .over1 {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    @media(max-width:390px) {
+        .visitors {
+            font-size: 10px;
+        }
+    }
+
+    .type button {
+        margin-bottom: 10px;
+    }
+
+    .hides {
+        display: none;
+    }
+
+    .buttonid {
+        border: none;
+        background-color: #fff;
+        padding: 15px 0 15px 70px;
+    }
+
+    .question i {
+        padding: 0 0 0 100px;
+    }
+
+    .buttonid:hover {
+        cursor: pointer;
+    }
+
+    .question p {
+        font-size: xxx-large;
+        font-weight: bolder;
+        padding: 0 0 0 70px;
+        margin: 0px 0 30px 0;
+    }
+
+    .q1 p {
+        font-weight: lighter;
+        font-size: medium;
+        padding-top: 15px;
+        width: 750px;
+        text-align: justify;
+        color: rgb(53, 52, 52);
+        margin: -15px 0 30px 0;
+        padding: 0 0 0 70px;
+    }
+
+    .q2 p {
+        font-weight: lighter;
+        font-size: medium;
+        padding-top: 15px;
+        width: 750px;
+        text-align: justify;
+        color: rgb(53, 52, 52);
+        margin: -15px 0 30px 0;
+        padding: 0 0 0 70px;
+    }
+
+    .q2 i {
+        padding: 0 0 0 363px;
+    }
+
+    .question h4 {
+        padding: 80px 0 0 70px;
+        color: grey;
+    }
+
+    .hides p {
+        font-weight: lighter;
+        font-size: medium;
+        padding-top: 15px;
+        width: 750px;
+        text-align: justify;
+        color: rgb(53, 52, 52);
+        margin: -15px 0 30px 0;
+    }
+
+    .q1 i {
+        padding: 0 0 0 175px;
+    }
+
+    .q3 p {
+        font-weight: lighter;
+        font-size: medium;
+        padding-top: 15px;
+        width: 750px;
+        text-align: justify;
+        color: rgb(53, 52, 52);
+        margin: -15px 0 30px 0;
+        padding: 0 0 0 70px;
+    }
+
+    .q3 i {
+        padding: 0 0 0 107px;
+    }
+
+    #sellbtn.clicked,
+    #rentbtn.clicked,
+    .clicked {
+        border-color: rgb(111, 165, 184) !important;
+        background-color: rgb(234, 243, 247) !important;
+        font-weight: bold;
+    }
+
+    @media(max-width:860px) {
+        .buttonid h2 {
+            font-size: large;
+        }
+
+        .hides p {
+            width: 670px;
+        }
+    }
+
+    @media(max-width: 860px) {
+        .q1 i {
+            padding: 0 0 0 168px;
+        }
+
+        .q2 i {
+            padding: 0 0 0 337px;
+        }
+    }
+
+    @media(max-width:810px) {
+        .visitors {
+            width: 700px;
+        }
+    }
+
+    @media(max-width: 775px) {
+        .buttonid h2 {
+            font-size: medium;
+        }
+
+        .q1 i {
+            padding: 0 0 0 161px;
+        }
+
+        .q2 i {
+            padding: 0 0 0 311px;
+        }
+
+        .hides p {
+            width: 620px;
+            font-size: small;
+        }
+    }
+
+    @media(max-width:712px) {
+        .visitors {
+            width: 600px;
+        }
+
+        .buttonid h2 {
+            font-size: small;
+        }
+
+        .q1 i {
+            padding: 0 0 0 149px;
+        }
+
+        .q2 i {
+            padding: 0 0 0 272px;
+        }
+
+        .hides p {
+            width: 500px;
+            font-size: small;
+        }
+    }
+
+    @media(max-width: 665px) {
+        .question p {
+            font-size: xx-large;
+        }
+
+        .hides p {
+            font-size: small;
+        }
+    }
+
+    @media(max-width:650px) {
+        .visitors {
+            width: 500px;
+            text-align: center;
+        }
+    }
+
+    @media(max-width:560px) {
+        .visitors {
+            width: 400px;
+        }
+    }
+
+    @media(max-width:425px) {
+        .visitors {
+            width: 300px;
+        }
+
+        .visitors h1 {
+            font-size: large;
+            padding: 20px;
+        }
+
+        .over1 {
+            font-size: x-small;
+            padding: 0;
+        }
+    }
+
+    @media(max-width:400px) {
+        .startposting {
+            width: 250px;
+        }
+
+        .phone input {
+            width: 225px;
+        }
+
+        .submit button {
+            width: 225px;
+        }
+    }
+
+    footer {
+        background-color: #181c2b;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+
+    .footer {
+        display: flex;
+        justify-content: space-evenly;
+        /* flex-wrap: wrap; */
+        width: 100%;
+        gap: 18px;
+        padding: 10rem 0rem 2rem 0rem;
+    }
+
+    .homeverse {
+        margin-bottom: 30px;
+        text-align: left;
+    }
+
+    .homeverse img {
+        height: 1.5rem;
+    }
+
+    .homeverse h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .homeverse ul {
+        list-style: none;
+    }
+
+    .homeverse ul li {
+        margin-bottom: 10px;
+    }
+
+    .homeverse ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .homeverse ul li a:hover {
+        color: #f05642;
+    }
+
+    .social-icons a {
+        margin-right: 10px;
+        color: #fff;
+        font-size: 1.2rem;
+    }
+
+    .social-icons a:hover {
+        color: #f05642;
+    }
+
+    .reserved {
+        background-color: #282b39;
+        padding-block: 30px;
+        text-align: center;
+        font-size: 14px;
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    .exploreOverlay {
+        color: white;
+        background-color: rgb(45, 43, 43);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 0;
+        width: 0;
+        overflow: hidden;
+        height: 100%;
+        transition: .3s ease;
+        white-space: nowrap;
+    }
+
+    .explore:hover .exploreOverlay {
+        width: 100%;
+        cursor: pointer;
+    }
+
+    /* Media Queries for Footer*/
+    @media (max-width:1125px) {
+        .footerheading h2 {
+            font-size: 30px;
+        }
+
+        .footerheading {
+            top: -13%;
+            padding: 40px 10px;
+        }
+
+        .footer {
+            flex-wrap: wrap;
+        }
+
+        .homeverse {
+            width: 40%;
+        }
+
+        .explore-btn {
+            padding: 10px 20px;
+        }
+    }
+
+    @media (max-width:555px) {
+        .homeverse {
+            width: 80%;
+        }
+
+        .footerheading {
+            top: -8%;
+            /* padding: 40px 10px; */
+        }
+
+        .footerheading h2 {
+            font-size: 20px;
+        }
+
+        .explore-btn {
+            padding: 10px 10px;
+        }
+    }
+
+    @media (max-width:665px) {
+        footer {
+            padding-bottom: 80px;
+        }
+    }
+
+    @media(max-width:600px) {
+        .buttonid {
+            padding: 15px 0 15px 5px;
+        }
+    }
+
+    @media(max-width:530px) {
+        .question i {
+            padding: 0 0 0 100px;
+        }
+    }
+</style>
+
+<body>
+    <header>
+        <a href="index.html"><img src="./assets/logo.png" alt="logo"></a>
+    </header>
+    <div class="postproperty">
+        <div class="sell">
+            <h1>Sell or Rent your Property <span>online faster </span>with Homeverse</h1>
+            <p><i class="fa-solid fa-check"></i> Advertise for FREE</p>
+            <p><i class="fa-solid fa-check"></i> Get unlimited Enquiries</p>
+            <p><i class="fa-solid fa-check"></i> Get shortlisted Tenants and Buyers</p>
+            <p><i class="fa-solid fa-check"></i> Assistance in co-ordinating site visits</p>
+        </div>
+        <div class="startposting">
+            <h3>Start posting your property, it's FREE</h3>
+            <h5>Add basic details</h5>
+            <h4>You are looking to...</h4>
+            <button id="sellbtn">Sell</button>
+            <button id="rentbtn">Rent</button>
+            <h4>and it's a...</h4>
+            <input type="radio" id="res" name="radio">
+            <label for="radio">Residential</label>
+            <input type="radio" id="res" name="radio">
+            <label for="radio">Commercial</label>
+            <div class="type">
+                <button class="btn">Flat / Apartment</button>
+                <button class="btn">Independent / House/Villa</button>
+                <button class="btn">Independent / Builder Floor</button>
+                <button class="btn">Plot / Land</button>
+                <button class="btn">Studio Apartment</button>
+                <button class="btn">Serviced Apartment</button>
+                <button class="btn">Farmhouse</button>
+                <button class="btn">Other</button>
+            </div>
+            <h4>Your contact details for the buyers to reach you</h4>
+            <div class="phone">
+                <input type="text" placeholder="Your Phone">
+            </div>
+            <div class="submit">
+                <button type="submit">Start Now</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="how">
+        <p>HOW TO POST</p>
+        <h1>Post Your Property in 3 Simple Steps</h1>
+    </div>
+    <div class="howtopost">
+        <div class="add">
+            <img src="./assets/Gal-removebg-preview.png" alt="img">
+            <h2><span>01.</span>Add details of your property</h2>
+            <p>Begin by telling us the few basic steps about your property like your property type, location, No. of
+                rooms etc.</p>
+        </div>
+        <div class="add">
+            <img src="./assets/hou-removebg-preview.png" alt="img">
+            <h2><span>02.</span>Upload Photos and Videos</h2>
+            <p>Upload photos and videos of your property either via your desktop device or from your mobile phone</p>
+        </div>
+        <div class="add">
+            <img src="./assets/cont-removebg-preview.png" alt="img">
+            <h2><span>03.</span>Add pricing and ownership</h2>
+            <p>Just update your property's ownership details and your expected price and your property is ready for
+                posting</p>
+        </div>
+    </div>
+    <div class="submit1">
+        <button>Begin to post your property</button>
+    </div>
+    <div class="visitors">
+        <h1>With over 7 million unique visitors monthly, your property gets maximum visibility on Homeverse</h1>
+        <div class="over">
+            <div class="over1">
+                <p>OVER</p>
+                <h2>1M</h2>
+                <p>Property listings</p>
+            </div>
+            <div class="over1">
+                <p>OVER</p>
+                <h2>5.5M</h2>
+                <p>Monthly searches</p>
+            </div>
+            <div class="over1">
+                <p>OVER</p>
+                <h2>200K</h2>
+                <p>Owners advertising monthly</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="homeverse company-info">
+                <img src="./assets/footerLogo.png" alt="Homeverse Logo"> <br><br>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p><br>
+                <p>Brooklyn, New York, United States</p><br>
+                <p>+0123-456789</p><br>
+                <p>contact@homeverse.com</p><br>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="homeverse">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">All Products</a></li>
+                    <li><a href="#">Locations Map</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact us</a></li>
+                </ul>
+            </div>
+
+            <div class="homeverse">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Order Tracking</a></li>
+                    <li><a href="#">Wish List</a></li>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Promotional Offers</a></li>
+                </ul>
+            </div>
+
+            <div class="homeverse">
+                <h3>Customer Care</h3>
+                <ul>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">Wish List</a></li>
+                    <li><a href="#">Order Tracking</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="reserved">
+            <p>© 2024 Homeverse.com . All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+
+        const sellButton = document.getElementById("sellbtn");
+        const rentButton = document.getElementById("rentbtn");
+
+        sellButton.addEventListener("click", () => {
+            sellButton.classList.add("clicked");
+            rentButton.classList.remove("clicked");
+        });
+
+        rentButton.addEventListener("click", () => {
+            rentButton.classList.add("clicked");
+            sellButton.classList.remove("clicked");
+        });
+
+
+        const buttonsfor = document.querySelectorAll(".btn");
+
+        for (let i = 0; i < buttonsfor.length; i++) {
+            buttonsfor[i].addEventListener('click', function () {
+                for (let j = 0; j < buttonsfor.length; j++) {
+                    buttonsfor[j].classList.remove("clicked");
+                }
+                buttonsfor[i].classList.add("clicked");
+            });
+        }
+
+        const buttons = document.querySelectorAll('.buttonid');
+        const hides = document.querySelectorAll('.hides');
+        const icons1 = document.querySelectorAll('.icons1');
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', function () {
+                if (hides[i].style.display === "none" || hides[i].style.display === "") {
+                    hides[i].style.display = "block";
+                    icons1[i].classList.remove('fa-plus');
+                    icons1[i].classList.add('fa-minus');
+                } else {
+                    hides[i].style.display = "none";
+                    icons1[i].classList.remove('fa-minus');
+                    icons1[i].classList.add('fa-plus');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
