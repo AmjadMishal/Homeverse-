@@ -86,86 +86,86 @@ for (let i = 0; i < scontact.length; i++) {
 
 sprop.addEventListener("click", open);
 // Sign Up and Log In JS:
-const toogleUser = document.querySelectorAll(".log");
-const form = document.querySelectorAll(".form");
-const logOverlay = document.getElementById("logOverlay");
-const user = document.querySelector(".userlogin");
-for (let i = 0; i < toogleUser.length; i++) {
-  toogleUser[i].addEventListener("click", function () {
-    form[0].classList.toggle("displayme");
-    form[1].classList.toggle("displayme");
-  });
-}
+// const toogleUser = document.querySelectorAll(".log");
+// const form = document.querySelectorAll(".form");
+// const logOverlay = document.getElementById("logOverlay");
+// const user = document.querySelector(".userlogin");
+// for (let i = 0; i < toogleUser.length; i++) {
+//   toogleUser[i].addEventListener("click", function () {
+//     form[0].classList.toggle("displayme");
+//     form[1].classList.toggle("displayme");
+//   });
+// }
 
-logOverlay.addEventListener("click", function (e) {
-  if (e.target === logOverlay) {
-    logOverlay.style.display = "none";
-  }
-});
+// logOverlay.addEventListener("click", function (e) {
+//   if (e.target === logOverlay) {
+//     logOverlay.style.display = "none";
+//   }
+// });
 
-user.addEventListener("click", () => {
-  logOverlay.style.display = "flex";
-});
+// user.addEventListener("click", () => {
+//   logOverlay.style.display = "flex";
+// });
 
-function submitbutton() {
-  const userData = {
-    username: document.getElementById("username").value,
-    email: document.getElementById("email").value,
-    password: document.getElementById("password").value,
-    confirm: document.getElementById("confirm").value,
-  };
-  // console.log(userData);
-  let users = JSON.parse(localStorage.getItem("users")) || [];
+// function submitbutton() {
+//   const userData = {
+//     username: document.getElementById("username").value,
+//     email: document.getElementById("email").value,
+//     password: document.getElementById("password").value,
+//     confirm: document.getElementById("confirm").value,
+//   };
+//   // console.log(userData);
+//   let users = JSON.parse(localStorage.getItem("users")) || [];
 
-  if (
-    !userData.username ||
-    !userData.email ||
-    !userData.password ||
-    !userData.confirm
-  ) {
-    alert("Plaese fill all required fields.");
-  }
-  if (userData.password !== userData.confirm) {
-    alert("password does not match.");
-  }
-  if (
-    userData.username &&
-    userData.email &&
-    userData.password &&
-    userData.confirm === userData.password
-  ) {
-    users.push(userData);
-    localStorage.setItem("users", JSON.stringify(users));
-    alert("Registration Successful");
-    document.getElementById("username").value = "";
-    document.getElementById("email").value = "";
-    document.getElementById("password").value = "";
-    document.getElementById("confirm").value = "";
-    logOverlay.style.display = "none";
-  }
-}
+//   if (
+//     !userData.username ||
+//     !userData.email ||
+//     !userData.password ||
+//     !userData.confirm
+//   ) {
+//     alert("Plaese fill all required fields.");
+//   }
+//   if (userData.password !== userData.confirm) {
+//     alert("password does not match.");
+//   }
+//   if (
+//     userData.username &&
+//     userData.email &&
+//     userData.password &&
+//     userData.confirm === userData.password
+//   ) {
+//     users.push(userData);
+//     localStorage.setItem("users", JSON.stringify(users));
+//     alert("Registration Successful");
+//     document.getElementById("username").value = "";
+//     document.getElementById("email").value = "";
+//     document.getElementById("password").value = "";
+//     document.getElementById("confirm").value = "";
+//     logOverlay.style.display = "none";
+//   }
+// }
 
-function login() {
-  const loginEmail = document.getElementById("lemail").value;
-  const loginPassword = document.getElementById("lpassword").value;
+// function login() {
+//   const loginEmail = document.getElementById("lemail").value;
+//   const loginPassword = document.getElementById("lpassword").value;
 
-  const users = JSON.parse(localStorage.getItem("users")) || [];
-  let foundUser = null;
+//   const users = JSON.parse(localStorage.getItem("users")) || [];
+//   let foundUser = null;
 
-  users.forEach((user) => {
-    if (user.email === loginEmail && user.password === loginPassword) {
-      foundUser = user;
-    }
-  });
+//   users.forEach((user) => {
+//     if (user.email === loginEmail && user.password === loginPassword) {
+//       foundUser = user;
+//     }
+//   });
 
-  if (foundUser) {
-    alert(`Login successful!`);
-    document.getElementById("lemail").value = "";
-    document.getElementById("lpassword").value = "";
-  } else {
-    alert("Login failed: Incorrect email or password.");
-  }
-}
+//   if (foundUser) {
+//     alert(`Login successful!`);
+//     document.getElementById("lemail").value = "";
+//     document.getElementById("lpassword").value = "";
+//   } else {
+//     alert("Login failed: Incorrect email or password.");
+//   }
+// }
 
 // Faq section js:
 for (let i = 0; i < faq.length; i++) {
@@ -262,3 +262,8 @@ function validateForm() {
     return true;
   }
 }
+
+document.querySelector(".userlogin").addEventListener("click", function () {
+  const url = this.getAttribute("data-url");
+  window.open(url, "_self"); // Opens the URL in a new tab
+});
